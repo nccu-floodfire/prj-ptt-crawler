@@ -14,6 +14,12 @@ This README would normally document whatever steps are necessary to get your app
 * `make`
 * `./crawler --help`
 
+### Cron job example
+
+```
+0 0 * * * /path/to/crawler --board=politics --sleep-between-retry=10 --start-date=$(date +\%Y-\%m-\%d --date='-3 day') --storage=rdb --db-username=root --db-password=nccu --timeout=10 --sleep-between-article=1 --stop-date=2014-01-01 --stop-on-duplicate=true > /tmp/politics.log 2>&1
+```
+
 
 ### LICENSE
 
