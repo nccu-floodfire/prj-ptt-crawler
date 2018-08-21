@@ -95,7 +95,7 @@ switch ($storage) {
 }
 
 $PttCrawler = new PttCrawler($Db, $board_name);
-$PttCrawler->set_config(
+$PttCrawler->setConfig(
 	array(
 		"list_sleep" => isset($options['sleep-between-list']) ? $options['sleep-between-list'] : null,
 		"article_sleep" => isset($options['sleep-between-article']) ? $options['sleep-between-article'] : null,

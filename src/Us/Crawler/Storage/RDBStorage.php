@@ -6,7 +6,7 @@ use \PDOException;
 class RDBStorage extends Database implements StorageInterface
 {
 
-    function __construct($db_username, $db_password = '', $db_host = '127.0.0.1', $db_port = '3306')
+    public function __construct($db_username, $db_password = '', $db_host = '127.0.0.1', $db_port = '3306')
     {
         parent::__construct($db_username, $db_password, $db_host, $db_port);
     }
@@ -14,7 +14,7 @@ class RDBStorage extends Database implements StorageInterface
     /**
      * Insert List
      */
-    public function InsertList($array, $board_name)
+    public function insertList($array, $board_name)
     {
         $sql = 'INSERT INTO list (id, forum, title, `date`, author) VALUES (:id, :forum, :title, :date, :author)';
         $bind["id"] = $array["url"];
@@ -40,7 +40,7 @@ class RDBStorage extends Database implements StorageInterface
     /**
      * Insert Article
      */
-    public function InsertArticle($article_array, $board_name)
+    public function insertArticle($article_array, $board_name)
     {
         $sql = "INSERT INTO article (id, forum, author, nick, title, content, `ts`) VALUES (:id, :forum, :author, :nick, :title, :content, :ts)";
         $bind["id"] = $article_array["id"];
@@ -61,7 +61,7 @@ class RDBStorage extends Database implements StorageInterface
                 if ($e->errorInfo[1] == SERVER_SHUTDOWN_CODE) {
                         $count++;
                         $this->reconnectPDO();
-                    }
+                }
                 throw $e;
             }
         }
@@ -69,7 +69,7 @@ class RDBStorage extends Database implements StorageInterface
         return $this->db->lastInsertId();
     }
 
-    public function InsertComments($article_id, $article_time, $comment_array)
+    public function insertComments($article_id, $article_time, $comment_array)
     {
         $year = date("Y", $article_time); // use article year as comment year
         foreach ($comment_array as $item) {
@@ -98,7 +98,7 @@ class RDBStorage extends Database implements StorageInterface
         return $this->db->lastInsertId();
     }
 
-    public function GetArticleByArticleId($article_id)
+    public function getArticleByArticleId($article_id)
     {
         $sql = "SELECT * FROM article WHERE id = :article_id";
         $bind["article_id"] = $article_id;

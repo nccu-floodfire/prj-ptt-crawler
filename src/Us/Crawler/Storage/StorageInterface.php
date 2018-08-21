@@ -1,19 +1,20 @@
-<?php namespace Us\Crawler\Storage;
+<?php
+namespace Us\Crawler\Storage;
 
-interface StorageInterface {
+interface StorageInterface
+{
 
     /**
      * Insert List
      */
-    public function InsertList($array, $board_name);
+    public function insertList($array, $board_name);
 
     /**
      * Insert Article
      */
-    public function InsertArticle($array, $board_name);
+    public function insertArticle($array, $board_name);
 
-    public function InsertComments($article_id, $article_time, $comment_array);
+    public function insertComments($article_id, $article_time, $comment_array);
 
-    public function GetArticleByArticleId($article_id);
+    public function getArticleByArticleId($article_id);
 }
-
