@@ -22,7 +22,8 @@ $longopts  = array(
 	"storage:",
 	"db-username:",
 	"db-password:",
-	"db-host:",
+    "db-host:",
+    "db-port:",
 	"debug",
 	"help"
 );
