@@ -22,6 +22,8 @@ $longopts  = array(
 	"storage:",
 	"db-username:",
 	"db-password:",
+    "db-host:",
+    "db-port:",
 	"debug",
 	"help"
 );
@@ -45,6 +47,8 @@ Usage: php crawler.php --board=<board name> {options}
   --storage=STRING            : Available storage: "dummy" and "rdb"
   --db-username=STRING        : Database username (required when using '--storage=rdb')
   --db-password=STRING        : Database password
+  --db-host=STRING        	  : Database host
+  --db-port=INT               : Database connect port
   --help                      : Show this dialog
   --debug                     : Enable debug (not implement yet)
 EOF;
@@ -70,10 +74,19 @@ switch ($storage) {
 		$db_password = '';
 		if (array_key_exists('db-password', $options)) {
 			$db_password = $options['db-password'];
+        }
+        
+        $db_host = '127.0.0.1';
+        if (array_key_exists('db-host', $options)) {
+			$db_host = $options['db-host'];
+        }
 
-		}
+        $db_port = '3306';
+        if (array_key_exists('db-port', $options)) {
+			$db_port = $options['db-port'];
+        }
 
-		$Db = new RDBStorage($db_username, $db_password);
+		$Db = new RDBStorage($db_username, $db_password, $db_host, $db_port);
 		break;
 	case 'dummy': // no break
 	default:
