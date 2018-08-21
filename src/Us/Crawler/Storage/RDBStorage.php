@@ -6,9 +6,9 @@ use \PDOException;
 class RDBStorage extends Database implements StorageInterface
 {
 
-    function __construct($db_username, $db_password = '', $db_host = '127.0.0.1')
+    function __construct($db_username, $db_password = '', $db_host = '127.0.0.1', $db_port = '3306')
     {
-        parent::__construct($db_username, $db_password, $db_host);
+        parent::__construct($db_username, $db_password, $db_host, $db_port);
     }
 
     /**
