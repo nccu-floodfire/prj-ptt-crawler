@@ -50,7 +50,11 @@ class PttCrawler
         }
     }
 
-    // 主程式邏輯
+    /**
+     * 主程式邏輯
+     *
+     * @return void
+     */
     private function main()
     {
         $state = 0;
@@ -187,7 +191,12 @@ class PttCrawler
         return $last_page;
     }
 
-    // 取得當頁的文章基本資料
+    /**
+     * 取得當頁的文章基本資料
+     *
+     * @param int $index 頁數
+     * @return void
+     */
     private function fetchPage($index)
     {
         $this->errorOutput("fetching page: " . $index . "\n");
@@ -211,9 +220,9 @@ class PttCrawler
                     $count = 0;
                 }
             } elseif ($count % 3 == 2) {
-                $post_temp["date"] = $element->plaintext;
-            } else {
                 $post_temp["author"] = $element->plaintext;
+            } else {
+                $post_temp["date"] = $element->plaintext;
                 array_push($result, $post_temp);
                 $post_temp = array();
             }

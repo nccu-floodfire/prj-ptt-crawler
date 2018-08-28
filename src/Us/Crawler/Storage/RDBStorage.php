@@ -1,4 +1,6 @@
-<?php namespace Us\Crawler\Storage;
+<?php
+
+namespace Us\Crawler\Storage;
 
 use \PDO;
 use \PDOException;
